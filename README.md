@@ -44,19 +44,7 @@ No installation needed! Click the link above to start asking questions about the
 
 3.  **Install the required packages:**
 
-    A `requirements.txt` file is not provided in the project. You will need to create one and add the following dependencies:
-
-    ```
-    streamlit
-    pandas
-    plotly
-    python-dotenv
-    sqlalchemy
-    langchain-google-genai
-    langchain-community
-    ```
-
-    Then, install the packages:
+    A `requirements.txt` file is provided in the project. So install the packages by running:
 
     ```bash
     pip install -r requirements.txt
