@@ -2,6 +2,8 @@
 
 This project is a Streamlit web application that acts as an AI-powered data analyst. It leverages the power of Large Language Models (LLMs) through LangChain and Google Gemini to convert natural language questions into SQL queries. The application then executes these queries against a SQLite database (Chinook) and visualizes the results as dataframes and charts.
 
+This project serves as a foundational step in exploring AI Agents, focusing on tool use (SQL execution) and LLM integration.
+
 ## Features
 
 - **Natural Language to SQL**: Ask questions in plain English and get SQL queries as answers.
