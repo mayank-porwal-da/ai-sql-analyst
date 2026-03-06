@@ -1,0 +1,16 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+
+# Environment Variables (Contains API Keys - CRITICAL)
+.env
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# OS metadata
+.DS_Store
+Thumbs.db
