@@ -4,6 +4,12 @@ This project is a Streamlit web application that acts as an AI-powered data anal
 
 This project serves as a foundational step in exploring AI Agents, focusing on tool use (SQL execution) and LLM integration.
 
+## 🚀 Try It Online
+
+**Live Demo:** [https://ai-sql-analyst-chinook-db.streamlit.app/](https://ai-sql-analyst-chinook-db.streamlit.app/)
+
+No installation needed! Click the link above to start asking questions about the Chinook database powered by AI.
+
 ## Features
 
 - **Natural Language to SQL**: Ask questions in plain English and get SQL queries as answers.
