@@ -1,91 +1,95 @@
-# AI SQL Analyst
+# AI Data Assistant for Chinook Database
 
-This project is a Streamlit web application that acts as an AI-powered data analyst. It leverages the power of Large Language Models (LLMs) through LangChain and Google Gemini to convert natural language questions into SQL queries. The application then executes these queries against a SQLite database (Chinook) and visualizes the results as dataframes and charts.
+## Project Description
+AI Data Assistant is a Streamlit application that combines an LLM-powered SQL chatbot with business intelligence dashboards for the Chinook sample database.
 
-This project serves as a foundational step in exploring AI Agents, focusing on tool use (SQL execution) and LLM integration.
-
-## 🚀 Try It Online
-
-**Live Demo:** [https://ai-sql-analyst-chinook-db.streamlit.app/](https://ai-sql-analyst-chinook-db.streamlit.app/)
-
-No installation needed! Click the link above to start asking questions about the Chinook database powered by AI.
+The app converts natural language questions into SQL queries, applies SQL safety guardrails, executes validated queries on SQLite, and returns tabular + chart-based insights. It also supports local LLM inference through Ollama models.
 
 ## Features
+- Natural Language to SQL generation
+- SQL guardrails for safe read-only querying
+- Query history tracking in chat
+- Multi-model support via Ollama (plus Gemini option)
+- Store sales BI dashboard
+- Database schema explorer dashboard
+- Automatic chart generation for chatbot query results
 
-- **Natural Language to SQL**: Ask questions in plain English and get SQL queries as answers.
-- **Interactive Chat Interface**: A user-friendly chat interface to interact with the AI analyst.
-- **Automatic Chart Generation**: The application automatically generates bar or line charts based on the query results.
-- **SQL Query Validation**: A security measure to prevent unsafe SQL operations like `DROP`, `DELETE`, `UPDATE`, `INSERT`, and `ALTER`.
-- **Display Generated SQL**: The generated SQL query is displayed to the user for transparency and learning purposes.
+## Architecture
+`User -> Streamlit UI -> LLM Agent -> SQL Generation -> SQL Guardrails -> Database -> Results Visualization`
 
-## Getting Started
+### Runtime Flow
+1. User asks a question in the Chatbot tab.
+2. The selected LLM generates SQL from the database schema context.
+3. Guardrails validate SQL (read-only, single statement, safe keywords).
+4. SQL executes against the Chinook SQLite database.
+5. Results are shown as a dataframe and optional chart.
 
-### Prerequisites
+## Tech Stack
+### Frontend
+- Streamlit
 
-- Python 3.7+
-- pip
-- A Google API key with the Gemini API enabled.
+### AI / LLM
+- LangChain
+- Ollama
+- Llama / Qwen / Gemini models
 
-### Installation
+### Database
+- SQLite (Chinook)
+- SQLAlchemy
 
-1.  **Clone the repository:**
+### Data Processing
+- Pandas
 
-    ```bash
-    git clone https://github.com/mayank-porwal-da/ai-sql-analyst.git
-    cd ai-sql-analyst
-    ```
+### Visualization
+- Plotly Express
 
-2.  **Create and activate a virtual environment:**
+## Project Structure
+```text
+final_project/
+├── app.py                     # Streamlit entrypoint (UI orchestration)
+├── app_core/
+│   ├── config.py              # Constants, DB paths, model list, SQL prompt
+│   ├── llm.py                 # LLM loading + SQL generation chain
+│   ├── sql_utils.py           # SQL cleaning + safety validation
+│   ├── database.py            # DB resource loading + analytics queries
+│   └── charts.py              # Chat/store chart rendering helpers
+├── Chinook_Sqlite.sqlite
+├── requirements.txt
+└── README.md
+```
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate # On Windows, use `venv\Scripts\activate`
-    ```
+## Installation
+1. Clone the repository.
+2. Create and activate a virtual environment.
+3. Install dependencies:
 
-3.  **Install the required packages:**
+```bash
+pip install -r requirements.txt
+```
 
-    A `requirements.txt` file is provided in the project. So install the packages by running:
+4. Configure environment variables (in `.env`):
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+```env
+GOOGLE_API_KEY=your_key_here
+```
 
-4.  **Set up the environment variables:**
-
-    Create a `.env` file in the root directory of the project and add your Google API key:
-
-    ```
-    GOOGLE_API_KEY="your-google-api-key"
-    ```
+Note: `GOOGLE_API_KEY` is required only when using Gemini. Local Ollama models do not require it.
 
 ## Usage
-
-To run the Streamlit application, use the following command:
+Run from the `final_project` directory:
 
 ```bash
 streamlit run app.py
 ```
 
-This will open the application in your web browser. You can then start asking data-related questions in the chat input.
+### Tabs
+- `Store Dashboard`: sales BI metrics and charts
+- `Chatbot`: natural-language SQL assistant
+- `Database Dashboard`: schema and table overview
 
-## Project Structure
-
-```
-.
-├── app.py              # The main Streamlit application file.
-├── Chinook_Sqlite.sqlite # The SQLite database file.
-├── .env                # The file to store the Google API key.
-└── .streamlit/
-    └── secrets.toml    # Streamlit secrets file (can also be used for API keys).
-```
-
-## Acknowledgements
-
-This project is powered by the following amazing technologies:
-
-- [Streamlit](https://streamlit.io/)
-- [LangChain](https://www.langchain.com/)
-- [Google Gemini](https://deepmind.google/technologies/gemini/)
-- [Plotly](https://plotly.com/)
-- [Pandas](https://pandas.pydata.org/)
-- [SQLAlchemy](https://www.sqlalchemy.org/)
+## Future Improvements
+- Automatic SQL correction / retry loop for invalid SQL
+- Query explanation mode using LLM
+- Multi-database support (PostgreSQL, MySQL, SQL Server)
+- Vector-based schema retrieval for large databases
+- Role-based access and query auditing
