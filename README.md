@@ -6,7 +6,7 @@ This project serves as a foundational step in exploring AI Agents, focusing on t
 
 ## 🚀 Try It Online
 
-**Live Demo: ** [https://ai-sql-analyst-chinook-db.streamlit.app/](https://ai-sql-analyst-chinook-db.streamlit.app/)
+**Live Demo:** [https://ai-sql-analyst-chinook-db.streamlit.app/](https://ai-sql-analyst-chinook-db.streamlit.app/)
 
 No installation needed! Click the link above to start asking questions about the Chinook database powered by AI.
 
