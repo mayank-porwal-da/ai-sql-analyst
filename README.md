@@ -5,6 +5,10 @@ AI Data Assistant is a Streamlit application that combines an LLM-powered SQL ch
 
 The app converts natural language questions into SQL queries, applies SQL safety guardrails, executes validated queries on SQLite, and returns tabular + chart-based insights. It also supports local LLM inference through Ollama models.
 
+## 🚀 Try It Online
+
+**Live Demo:** [https://ai-sql-analyst.streamlit.app/](https://ai-sql-analyst.streamlit.app/)
+
 ## Features
 - Natural Language to SQL generation
 - SQL guardrails for safe read-only querying
